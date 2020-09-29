@@ -1,0 +1,16 @@
+Package: Spillover
+Type: Package
+Title: Spillover Index Based on VAR Modelling
+Version: 0.1
+Date: 2020-09-25
+Author: Jilber Urbina
+Maintainer: Jilber Urbina <jurbina@cipadla.com>
+Description: A user-friendly tool for estimating both total and directional volatility spillovers based on Diebold and Yilmaz (2009, 2012). It also provides the user with rolling estimation for total and net indices. User can find both orthogonalized and generalized versions for each kind of measures. See Diebold and Yilmaz (2009, 2012) find them at  <doi:10.1111/j.1468-0297.2008.02208.x> and <doi:10.1016/j.ijforecast.2011.02.006>.
+License: GPL-2
+Depends: R (>= 3.5.0), vars, zoo, fastSOM
+Encoding: UTF-8
+RoxygenNote: 7.1.0
+NeedsCompilation: no
+Packaged: 2020-09-25 17:48:29 UTC; jilber
+Repository: CRAN
+Date/Publication: 2020-09-29 08:40:02 UTC
