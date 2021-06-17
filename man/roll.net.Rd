@@ -24,7 +24,7 @@ roll.net(
 
 \item{ortho.type}{A character string indicating the type of orthogonalized index is required. \code{"partial"} takes a random sample out of all the possible combinations generated for the Choleski decomposition, while \code{"total"} uses all the combinations, therefore it takes more time to finish.}
 
-\item{...}{Further arguments to be passed to \code{var} function.}
+\item{...}{Further arguments to be passed to \code{VAR} function from vars package.}
 }
 \value{
 A \code{zoo} object holding all the net spillover index estimations.

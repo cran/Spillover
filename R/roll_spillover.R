@@ -10,7 +10,7 @@
 #' @param index A character string indicating whether the orthogonalized or the generalized index is computed.
 #' @param ortho.type Applicable only if \code{index="orthogonalized"}.  A character string indicating the type of orthogonalized index is required. \code{"single"} takes the original ordering of variables in VAR model and applies Cholesky decomposition for the fevd. Whereas \code{"partial"} takes a random sample out of all the possible combinations generated for the Cholesky decomposition, while \code{"total"} uses all the combinations, therefore it takes more time to finish.
 #' Both, \code{"partial"} and \code{"total"} provide average results.
-#' @param ... Further arguments to be passed to \code{var} function.
+#' @param ... Further arguments to be passed to \code{VAR} function from vars package.
 #' 
 #' @return A \code{zoo} object holding all the indeces.
 #' 
