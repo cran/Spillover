@@ -66,12 +66,6 @@ This is a user-frendly version of \code{fastSOM::sot_avg_exact()} function.
 }
 \examples{
 library(vars)
-data(stock.prices)
-stocks <- stock.prices[,1:2]
-VAR.1 <- VAR(stocks)
-O.spillover(VAR.1, n.ahead=5)
-O.spillover(VAR.1, n.ahead=5, ortho.type  = "partial")
-O.spillover(VAR.1, n.ahead=5, ortho.type  = "total")
 
 # Replicating Table 3, Diebold and Yilmaz (2009)
 \donttest{

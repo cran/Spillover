@@ -1,0 +1,8 @@
+Spillover v0.102 (Release date: 2022-12-10)
+============================================
+
+Changes:
+
+* Add a new function for plotting directional spillover
+* Add vignette for easy reproduction of Diebold and Yilmaz (2009, 2012)
+

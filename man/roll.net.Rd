@@ -33,10 +33,10 @@ A \code{zoo} object holding all the net spillover index estimations.
 Estimates the dynamic spillover index given a moving window as described in Diebold and Yilmaz (2012).
 }
 \examples{
+\donttest{
 data(dy2012) 
 G_net <- roll.net(as.zoo(dy2012[1:300,c(2,3,4)]), width = 200, index="generalized")
 
-\donttest{
 data(dy2012)
 # orthogonalized rolling net spillover index, based on a VAR(2)
 O_net_dy2012 <- roll.net(as.zoo(dy2012[,-1]), width = 200) 
@@ -50,5 +50,3 @@ Diebold, F. X. & Yilmaz, K.(2012). \emph{Better to Give than to Receive: Predict
 \author{
 Jilber Urbina
 }
-\keyword{htest}
-\keyword{ts}

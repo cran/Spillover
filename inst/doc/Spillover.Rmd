@@ -1,0 +1,133 @@
+---
+title: "Better to give than to receive: directional spillovers"
+author: "Jilber Urbina"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Spillover}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introduction
+
+This package provides useful and friendly functions to reproduce Diebold and Yilmaz (2012) papers. Its capabilities are not only for getting the directional indexes, but for plotting them too!
+
+In this vignette we are showing how to get all results from [Diebold and Yilmaz (2012).](https://www.sciencedirect.com/science/article/abs/pii/S016920701100032X)
+
+
+### Making DY2012 reproducible
+
+Let's start loading the package and data. In order to confirm we have the correct data, let's get the Table 1 from the paper.
+
+```{r, error=FALSE, message=FALSE, warning=FALSE}
+options(repos = list(CRAN="http://cran.rstudio.com/"))
+library(Spillover, quietly = TRUE)
+data(dy2012)
+```
+
+
+Once we are sure we have the correct data, let's get the spillover table, Table 2, this table is based on a VAR(4) and 10-day-ahead variance decomposition.
+
+```{r}
+require(dplyr)
+
+dy2012 %>% 
+  dplyr::select(-Date) %>% 
+  VAR(p=4) %>% 
+  G.spillover(standardized = FALSE) %>% 
+  round(2)
+
+```
+
+Now, let's move on, and get the dynamic total spillover index:
+
+
+```{r, warning=FALSE, message=FALSE, fig.align='center'}
+total_dynamic <- total.dynamic.spillover(as.zoo(dy2012[,-1]),
+                          width = 200, 
+                          index="generalized",
+                          p=4) 
+
+require(ggplot2)
+
+tibble(Date= dy2012$Date[-c(1:199)],  index = total_dynamic) %>% 
+  mutate(Date=as.Date(as.character(Date))) %>% 
+  ggplot(aes(x=Date, y=index)) +
+  geom_line()+
+  labs(caption = "Fig 2. Total volatility spillovers, four asset classes.")+
+  theme(plot.caption = element_text(hjust = 0))
+```
+
+This part of the code simply gets all directional spillovers, then we need to plot them.
+```{r}
+dy_results <- dynamic.spillover(data=dy2012, 
+                                width=200, 
+                                p=4) 
+```
+
+### Directional volatility spillovers, FROM four asset classes
+
+In order to get Figure 3 from Diebold and Yilmaz (2012), we proceed as follows:
+
+```{r, fig.align='center'}
+pp_from <- plotdy(data=dy_results, direction = "from") 
+
+pp_from +
+  labs(caption = "Fig 3. Directional volatility spillovers, FROM four asset classes.")+
+  theme(plot.caption = element_text(hjust = 0.5))
+```
+
+###  Directional volatility spillovers, TO four asset classes.
+Is it difficult to plot directional TO? NO! It is as just easy as:
+
+```{r, fig.align='center', warning=FALSE, message=FALSE}
+pp_to <- plotdy(dy_results, direction = "to")
+
+# Just for customization 
+pp_from +
+  labs(caption = "Fig. 4. Directional volatility spillovers, TO four asset classes.")+
+  theme(plot.caption = element_text(hjust = 0.5))
+```
+
+If you notice y scale is free, but we can get fix one using `facet_wrap(~variables, scales = "fixed")`
+
+### Net volatility spillovers, four asset classes.
+
+```{r, fig.align='center', warning=FALSE, message=FALSE}
+pp_net <- plotdy(dy_results, direction = "net")
+
+
+pp_net +
+  labs(caption = "Fig. 5. Net volatility spillovers, four asset classes.")+
+  theme(plot.caption = element_text(hjust = 0.5))
+```
+
+
+
+### Net pairwise volatility spillovers.
+
+```{r, fig.align='center'}
+pp_netpairwise <- plotdy(dy_results, direction = "net_pairwise")
+
+pp_netpairwise +
+  labs(caption = "Fig. 6. Net pairwise volatility spillovers.")+
+  theme(plot.caption = element_text(hjust = 0.5))
+```
+
+### Net pairwise FROM-TO
+
+Finally, we can add a new set of plots:
+
+```{r, fig.align='center'}
+pp_from_to_pairwise <- plotdy(dy_results, direction = "from_to_pairwise")
+
+
+```
+

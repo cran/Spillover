@@ -15,6 +15,7 @@
 
 
 net <- function(x){
+  .Deprecated("dynamic.spillover")
   TO   <- x[nrow(x)-1, 1:ncol(x)-1]
   FROM <- x[1:(nrow(x)-2), ncol(x)]
   NET <- TO - FROM
