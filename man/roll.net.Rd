@@ -30,7 +30,7 @@ roll.net(
 A \code{zoo} object holding all the net spillover index estimations.
 }
 \description{
-Estimates the dynamic spillover index given a moving window as described in Diebold and Yilmaz (2012).
+Estimates the dynamic spillover index given a moving window as described in Diebold and Yilmaz (2012). We recommend switching to \code{dynamic.spillover}.
 }
 \examples{
 \donttest{

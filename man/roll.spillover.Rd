@@ -31,7 +31,7 @@ Both, \code{"partial"} and \code{"total"} provide average results.}
 A \code{zoo} object holding all the indeces.
 }
 \description{
-Estimates the dynamic spillover index given a rolling window as described in Diebold and Yilmaz (2012).
+Estimates the dynamic spillover index given a rolling window as described in Diebold and Yilmaz (2012). We recommend switching to \code{dynamic.spillover}.
 }
 \examples{
  \donttest{

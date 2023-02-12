@@ -10,7 +10,7 @@ plotdy(
 )
 }
 \arguments{
-\item{data}{An object class \code{directional.spillover} resulting from applying \code{dynamic_spillover}}
+\item{data}{An object class \code{directional.spillover} resulting from applying \code{dynamic.spillover}}
 
 \item{direction}{A character string indicating the direction of the spillover, see Diebold and Yilmaz (2012)}
 }
@@ -28,7 +28,7 @@ require(dplyr)
 require(ggplot2)
 
 data(dy2012)
-dy_results <- dynamic_spillover(data=dy2012, width=200, remove.own = FALSE) 
+dy_results <- dynamic.spillover(data=dy2012, width=200, remove.own = FALSE) 
 
 pp_from <- plotdy(dy_results, direction = "from")
 
@@ -43,12 +43,7 @@ pp_net <- plotdy(dy_results, direction = "net")
 pp_netpairwise <- plotdy(dy_results, direction = "net_pairwise")
 
 pp_from_to_pairwise <- plotdy(dy_results, direction = "from_to_pairwise")
-dy_results$from_to_pairwise \%>\% head
 
-pp_to +
- scale_x_date(breaks=date_breaks("6 months"),
-              labels=date_format("\%b \%y"))+
- theme(axis.text.x = element_text(angle=45, hjust = 1))
 
 
 }

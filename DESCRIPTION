@@ -1,8 +1,8 @@
 Package: Spillover
 Type: Package
 Title: Spillover/Connectedness Index Based on VAR Modelling
-Version: 0.1.0.2
-Date: 2022-10-11
+Version: 0.1.0.3
+Date: 2023-02-7
 Author: Jilber Urbina
 Maintainer: Jilber Urbina <jurbina@cipadla.com>
 Description: A user-friendly tool for estimating both total and directional connectedness spillovers based on Diebold and Yilmaz (2009, 2012). It also provides the user with rolling estimation for total and net indices. User can find both orthogonalized and generalized versions for each kind of measures. See Diebold and Yilmaz (2009, 2012) find them at  <doi:10.1111/j.1468-0297.2008.02208.x> and <doi:10.1016/j.ijforecast.2011.02.006>.
@@ -10,10 +10,10 @@ License: GPL-2
 Depends: R (>= 3.5.0), vars
 Imports: dplyr, ggplot2, fastSOM, tidyr, zoo
 Encoding: UTF-8
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Suggests: rmarkdown, knitr
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2022-10-14 15:19:16 UTC; Jilber Urbina
+Packaged: 2023-02-10 17:51:02 UTC; jilber
 Repository: CRAN
-Date/Publication: 2022-10-16 19:52:37 UTC
+Date/Publication: 2023-02-12 21:52:09 UTC
