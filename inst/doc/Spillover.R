@@ -9,7 +9,7 @@ options(repos = list(CRAN="http://cran.rstudio.com/"))
 library(Spillover, quietly = TRUE)
 data(dy2012)
 
-## -----------------------------------------------------------------------------
+## ----message=FALSE, warning=FALSE---------------------------------------------
 require(dplyr)
 
 dy2012 %>% 
@@ -39,14 +39,14 @@ dy_results <- dynamic.spillover(data=dy2012,
                                 width=200, 
                                 p=4) 
 
-## ---- fig.align='center'------------------------------------------------------
+## ---- fig.align='center', out.width="70%"-------------------------------------
 pp_from <- plotdy(data=dy_results, direction = "from") 
 
 pp_from +
   labs(caption = "Fig 3. Directional volatility spillovers, FROM four asset classes.")+
   theme(plot.caption = element_text(hjust = 0.5))
 
-## ---- fig.align='center', warning=FALSE, message=FALSE------------------------
+## ---- fig.align='center', warning=FALSE, message=FALSE, out.width="70%"-------
 pp_to <- plotdy(dy_results, direction = "to")
 
 # Just for customization 
@@ -54,7 +54,7 @@ pp_from +
   labs(caption = "Fig. 4. Directional volatility spillovers, TO four asset classes.")+
   theme(plot.caption = element_text(hjust = 0.5))
 
-## ---- fig.align='center', warning=FALSE, message=FALSE------------------------
+## ---- fig.align='center', warning=FALSE, message=FALSE, out.width="70%"-------
 pp_net <- plotdy(dy_results, direction = "net")
 
 
@@ -62,14 +62,14 @@ pp_net +
   labs(caption = "Fig. 5. Net volatility spillovers, four asset classes.")+
   theme(plot.caption = element_text(hjust = 0.5))
 
-## ---- fig.align='center'------------------------------------------------------
+## ---- fig.align='center', out.width="70%"-------------------------------------
 pp_netpairwise <- plotdy(dy_results, direction = "net_pairwise")
 
 pp_netpairwise +
   labs(caption = "Fig. 6. Net pairwise volatility spillovers.")+
   theme(plot.caption = element_text(hjust = 0.5))
 
-## ---- fig.align='center'------------------------------------------------------
+## ---- fig.align='center', out.width="70%"-------------------------------------
 pp_from_to_pairwise <- plotdy(dy_results, direction = "from_to_pairwise")
 
 

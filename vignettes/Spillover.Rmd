@@ -35,7 +35,7 @@ data(dy2012)
 
 Once we are sure we have the correct data, let's get the spillover table, Table 2, this table is based on a VAR(4) and 10-day-ahead variance decomposition.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 require(dplyr)
 
 dy2012 %>% 
@@ -76,7 +76,7 @@ dy_results <- dynamic.spillover(data=dy2012,
 
 In order to get Figure 3 from Diebold and Yilmaz (2012), we proceed as follows:
 
-```{r, fig.align='center'}
+```{r, fig.align='center', out.width="70%"}
 pp_from <- plotdy(data=dy_results, direction = "from") 
 
 pp_from +
@@ -87,7 +87,7 @@ pp_from +
 ###  Directional volatility spillovers, TO four asset classes.
 Is it difficult to plot directional TO? NO! It is as just easy as:
 
-```{r, fig.align='center', warning=FALSE, message=FALSE}
+```{r, fig.align='center', warning=FALSE, message=FALSE, out.width="70%"}
 pp_to <- plotdy(dy_results, direction = "to")
 
 # Just for customization 
@@ -100,7 +100,7 @@ If you notice y scale is free, but we can get fix one using `facet_wrap(~variabl
 
 ### Net volatility spillovers, four asset classes.
 
-```{r, fig.align='center', warning=FALSE, message=FALSE}
+```{r, fig.align='center', warning=FALSE, message=FALSE, out.width="70%"}
 pp_net <- plotdy(dy_results, direction = "net")
 
 
@@ -113,7 +113,7 @@ pp_net +
 
 ### Net pairwise volatility spillovers.
 
-```{r, fig.align='center'}
+```{r, fig.align='center', out.width="70%"}
 pp_netpairwise <- plotdy(dy_results, direction = "net_pairwise")
 
 pp_netpairwise +
@@ -125,7 +125,7 @@ pp_netpairwise +
 
 Finally, we can add a new set of plots:
 
-```{r, fig.align='center'}
+```{r, fig.align='center', out.width="70%"}
 pp_from_to_pairwise <- plotdy(dy_results, direction = "from_to_pairwise")
 
 
